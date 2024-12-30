@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+.env*
+.cache
+!*.env.template
+.turbo
+build
+dist
+*-lock.json
+.temp*
+coverage

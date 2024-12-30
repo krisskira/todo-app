@@ -1,0 +1,32 @@
+{
+  "name": "prueba-coally",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "packageManager": "npm@8.5.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build && cp -r ./node_modules/swagger-ui-dist ./dist/apps/api/public/swagger-ui-dist && npm run swagger:definition --workspace=api",
+    "check-types": "turbo run check-types",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "test": "turbo run test",
+    "prestart": "npm run build",
+    "start": "node dist/apps/api/index.js",
+    "docker:build": "docker build -t todo-app -f .infra/Dockerfile ./"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.2",
+    "tsc": "^2.0.4",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "todo-types": "^1.0.0"
+  }
+}
