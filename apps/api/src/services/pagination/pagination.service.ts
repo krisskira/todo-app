@@ -9,6 +9,7 @@ export default function PaginationService(totals: number, limit: number, offset:
   // Corrección para el caso en que totals es 0
   if (totals === 0) {
     return {
+      total: 0,
       hasNext: false,
       hasPrevious: false,
       nextOffset: 0,
@@ -28,6 +29,7 @@ export default function PaginationService(totals: number, limit: number, offset:
   const previousLimit = hasPrevious ? Math.min(limit, offset) : 0
 
   return {
+    total: totals,
     hasNext,
     hasPrevious,
     nextOffset,

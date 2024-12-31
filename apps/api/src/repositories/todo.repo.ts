@@ -66,7 +66,7 @@ export class TodoRepository {
         }
       }
 
-      if (completed !== undefined) {
+      if (`${completed ?? ''}`) {
         queryFilter = {
           ...queryFilter,
           completed: completed === 'true' || completed === true

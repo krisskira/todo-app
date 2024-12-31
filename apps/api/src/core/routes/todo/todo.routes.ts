@@ -219,8 +219,8 @@ TodoRouter.get('/', ValidatorMiddleware(TodoFilterValidationsChain), async (req:
     const metadata = PaginationService(todos.total, Number(limit), Number(offset))
 
     res.status(200).json({
-      todos,
-      metadata
+      todos: todos.todos,
+      metadata: { ...metadata, total: todos.total }
     })
   } catch (error) {
     if (error instanceof HandleError) {

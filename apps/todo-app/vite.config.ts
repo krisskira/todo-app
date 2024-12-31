@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,7 +15,13 @@ export default defineConfig({
     },
   },
   server: {
-    origin: "http://0.0.0.0:3000",
+    proxy: {
+      "/api/v1": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
-  plugins: [react()],
+  plugins: [react(), tsconfigPaths()],
 });

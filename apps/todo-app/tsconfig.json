@@ -1,6 +1,10 @@
 {
   "files": [],
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "skipLibCheck": true,
     /* Paths */
     "baseUrl": ".",
     "paths": {
